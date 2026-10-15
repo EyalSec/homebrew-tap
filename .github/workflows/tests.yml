@@ -1,0 +1,41 @@
+name: brew test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Set up Homebrew
+        id: setup
+        uses: Homebrew/actions/setup-homebrew@main
+      - name: Style
+        run: brew style ${{ steps.setup.outputs.tap-name }}
+      - name: Audit, install and test every formula
+        run: |
+          shopt -s nullglob
+          formulae=(Formula/*.rb)
+          if [ ${#formulae[@]} -eq 0 ]; then
+            echo "No formulae yet."
+            exit 0
+          fi
+          tap="${{ steps.setup.outputs.tap-name }}"
+          for f in "${formulae[@]}"; do
+            name="$tap/$(basename "$f" .rb)"
+            brew audit --strict --online --formula "$name"
+            brew install --formula "$name"
+            brew test "$name"
+            brew linkage "$name" || true
+          done
+        working-directory: ${{ steps.setup.outputs.repository-path }}
