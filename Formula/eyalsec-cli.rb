@@ -1,7 +1,6 @@
 class EyalsecCli < Formula
   desc "Read your EyalSec security events and machines from the terminal"
   homepage "https://eyalsec.com"
-  version "0.1.0"
   license "MIT"
 
   on_macos do
