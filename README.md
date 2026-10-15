@@ -1,5 +1,7 @@
 # EyalSec Homebrew tap
 
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/EyalSec/homebrew-tap/badge)](https://scorecard.dev/viewer/?uri=github.com/EyalSec/homebrew-tap)
+
 Homebrew formulae for EyalSec's open-source tools, for macOS and Linux.
 
 ```bash

@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Set up Homebrew
         id: setup
-        uses: Homebrew/actions/setup-homebrew@main
+        uses: Homebrew/actions/setup-homebrew@f9676f1ffe2e1a720f81b2c54c51cfb99915ec14 # main
       - name: Style
         run: brew style ${{ steps.setup.outputs.tap-name }}
       - name: Audit, install and test every formula
