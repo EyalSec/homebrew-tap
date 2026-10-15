@@ -10,7 +10,7 @@ brew install eyalsec/tap/eyalsec-cli
 |---|---|
 | [`eyalsec-cli`](Formula/eyalsec-cli.rb) | Read your EyalSec events and machines from a terminal or a CI step: list, search and export events as CSV or JSON, show one event's full detail, list machines and runs. Source and docs: [EyalSec/eyalsec-cli](https://github.com/EyalSec/eyalsec-cli). |
 
-Each formula installs the signed release binaries published on the tool's GitHub release page; its checksums come from that release's `checksums.txt`. The release workflow of each tool updates its formula here, and this repository's CI installs and tests every formula on macOS and Linux before you do.
+Each formula installs the binaries published on the tool's GitHub release page, which carry build provenance attestations; its checksums come from that release's `checksums.txt`. The release workflow of each tool updates its formula here, and this repository's CI installs and tests every formula on macOS and Linux before you do.
 
 EyalSec follows untrusted data through your running program and reports when it reaches a risky operation, such as a SQL query, a shell command or a file path. To see it on your own code, [book a live demo](https://eyalsec.com/contact). Pricing is at [eyalsec.com/pricing](https://eyalsec.com/pricing).
 
